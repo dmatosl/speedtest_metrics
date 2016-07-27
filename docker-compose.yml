@@ -1,0 +1,23 @@
+
+app:
+  build: ./app
+  links:
+    - "influxdb:influxdb"
+    - "grafana:grafana"
+  environment:
+    - "SLEEP=5"
+
+influxdb:
+  image: influxdb
+  volumes:
+    - "./influxdb_data:/var/lib/influxdb/"
+  ports:
+    - "8083:8083"
+    - "8086:8086"
+
+grafana:
+  image: grafana/grafana
+  ports:
+    - "80:3000"
+  links:
+    - "influxdb:influxdb"
