@@ -8,10 +8,8 @@ Using docker-compose
 
     $ docker-compose build 
 
-
 ## Run
 
-    $ git clone https://github.com/dmatosl/speedtest_metrics.git 
     $ docker-compose up
 
 Under the hood it will spin up influxdb, grafana official containers and speedtest-metrics app container, import influxdb datasource and the dashboard to grafana and start collecting metrics and record into InfluxDB. It will collect metrics respecting $SLEEP (environment variable).

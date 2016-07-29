@@ -5,16 +5,20 @@ ENV "INFLUXDB_PORT=8086"
 ENV "INFLUXDB_USER=admin"
 ENV "INFLUXDB_PASSWORD=admin"
 ENV "INFLUXDB_DATABASE=speedtest_metrics"
+
+ENV "GRAFANA_HOST=grafana"
+ENV "GRAFANA_PORT=3000"
+ENV "GRAFANA_PROTO=http"
+ENV "GRAFANA_API_KEY=null"
+ENV "GRAFANA_ADMIN_USER=admin"
+ENV "GRAFANA_ADMIN_PASS=admin"
+ENV "GRAFANA_IMPORT_DATA=true"
+
 ENV "SLEEP=10"
 
 WORKDIR /app
 
 ADD ./ /app
-#COPY ./collect.py /app
-#COPY ./import_datasource.py /app
-#COPY ./requirements.txt /app
-#COPY ./run.sh /app
-
 RUN pip install -r requirements.txt
 
 ENTRYPOINT ["/app/run.sh"]
